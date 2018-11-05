@@ -1,11 +1,16 @@
-body, html {
-
-}
+@import url('https://fonts.googleapis.com/css?family=Quicksand|Pacifico');
 
 body {
+  font-family: 'Quicksand', sans-serif;
   background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin-top: 0;
+}
+
+.banner {
+  background-color: #f7797d;
+  text-align: center;
+  line-height: 40px;
+  font-weight: bold;
 }
 
 ul {
@@ -20,4 +25,25 @@ li.set {
 
 .set img {
   height: 100px;
+}
+
+.logo, .status {
+  margin: auto;
+  text-align: center;
+}
+
+h1, .dice {
+  display: inline-block;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  text-align: center;
+  font-size: 4.5em;
+}
+
+.dice {
+  height: 80px;
+  padding-right: 20px;
+  display: inline-block;
 }
