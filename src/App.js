@@ -78,7 +78,9 @@ class App extends Component {
         {/* TODO: put RandomButton here */}
         
         {this.statusMessage()}
+
         <h2>{this.state.randomTheme.name}</h2>
+        
         <section className="products">
         {
           this.state.sets.map(function(set, i){
