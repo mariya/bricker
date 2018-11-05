@@ -3,17 +3,7 @@ import './App.css';
 import Set from './Set.js';
 
 const REBRICKABLE_API_KEY='0b6a4abaa97580f8f57ec86abe790907'
-const MIN_SETS=30
-
-class RandomButton extends Component {
-  render() {
-    return (
-      <button onClick={this.props.fetch}>
-        Gimme New Lego
-      </button>
-    );
-  }
-}
+const MIN_SETS=40
 
 class App extends Component {
   state = { 
@@ -75,11 +65,14 @@ class App extends Component {
     return (
       <div className="App">
         <div className="banner">Your one-stop shop for Christmas Lego for your colleagues at SNP&SEQ</div>
-        <RandomButton fetch={this.fetchRandomTheme}></RandomButton>
+
         <div className="logo">
           <img className="dice" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Dice_simple.svg/2000px-Dice_simple.svg.png" />
           <h1>Bricker</h1>
         </div>  
+
+        {/* TODO: put RandomButton here */}
+        
         {this.statusMessage()}
         <h2>{this.state.randomTheme.name}</h2>
         <ul>
