@@ -1,34 +1,16 @@
-.App {
-  text-align: center;
+body, html {
+  background: #C6FFDD;  /* fallback for old browsers */
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+body {
+  background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f7797d, #FBD786, #C6FFDD); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li.set {
@@ -38,4 +20,26 @@ li.set {
 
 .set img {
   height: 100px;
+}
+
+.cloud {
+  list-style-type: none;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+.cloud li {
+  list-style: none;
+  display: inline-block;
+  padding: 5px;
+}
+
+.cloud li:nth-of-type(3n + 1) {
+  font-size: 1em;
+}
+.cloud li:nth-of-type(4n+3) {
+  font-size: 1.5em;
+}
+.cloud li:nth-of-type(5n - 3) {
+  font-size: 0.7em;
 }
