@@ -7,52 +7,47 @@ const REBRICKABLE_API_KEY='0b6a4abaa97580f8f57ec86abe790907'
 class App extends Component {
   state = { 
     sets: [],
-    themeIds: [],
-    themes: [],
+    randomTheme: '',
   }
 
   componentDidMount() {
-    this.fetchSets();
+    this.fetchRandomTheme();
   }
 
-  fetchThemes = () => {
+  fetchRandomTheme = () => {
     fetch('https://rebrickable.com/api/v3/lego/themes?page_size=700&ordering=parent_id', {
       headers: {
         'Authorization': 'key ' + REBRICKABLE_API_KEY
       }})
       .then(res => res.json())
       .then(json => {
+        const randomIndex = Math.floor(Math.random() * Math.floor(json.results.length - 1));
+        const randomTheme = json.results[randomIndex];
         this.setState({ 
-          themes: json.results.filter(theme => this.state.themeIds.indexOf(theme.id) >= 0)
+          randomTheme: randomTheme
         });
+        this.fetchSets(randomTheme.id);
       });
   }
 
-  fetchSets = () => {
-    fetch('https://rebrickable.com/api/v3/lego/sets/?min_year=2015&page_size=300', {
+  fetchSets = (themeId) => {
+    fetch('https://rebrickable.com/api/v3/lego/sets/?page_size=300&theme_id=' + themeId, {
       headers: {
         'Authorization': 'key ' + REBRICKABLE_API_KEY
       }})
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         this.setState({ 
           sets: json.results,
           themeIds: json.results.map(set => set.theme_id)
         });
-        this.fetchThemes();
       });
   }
 
   render() {
     return (
       <div className="App">
-       <ul className="cloud">
-        {
-          this.state.themes.map(function(t, i){
-            return <li>{t.name}</li>;
-        })}
-        </ul>
+      <h1>{this.state.randomTheme.name}</h1>
         <ul>
         {
           this.state.sets.map(function(set, i){

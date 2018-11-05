@@ -1,5 +1,5 @@
 body, html {
-  background: #C6FFDD;  /* fallback for old browsers */
+
 }
 
 body {
@@ -20,26 +20,4 @@ li.set {
 
 .set img {
   height: 100px;
-}
-
-.cloud {
-  list-style-type: none;
-  width: 80%;
-  text-align: center;
-  margin: auto;
-}
-.cloud li {
-  list-style: none;
-  display: inline-block;
-  padding: 5px;
-}
-
-.cloud li:nth-of-type(3n + 1) {
-  font-size: 1em;
-}
-.cloud li:nth-of-type(4n+3) {
-  font-size: 1.5em;
-}
-.cloud li:nth-of-type(5n - 3) {
-  font-size: 0.7em;
 }
