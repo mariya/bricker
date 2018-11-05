@@ -8,46 +8,45 @@ const MIN_SETS=40
 class App extends Component {
   state = { 
     sets: [],
+    themes: [],
     randomTheme: '',
     finding: true,
   }
 
   componentDidMount() {
-    this.fetchRandomTheme();
+    this.fetchThemes();
   }
 
-  fetchRandomTheme = () => {
+  fetchThemes = () => {
     fetch('https://rebrickable.com/api/v3/lego/themes?page_size=700&ordering=parent_id', {
       headers: {
         'Authorization': 'key ' + REBRICKABLE_API_KEY
       }})
       .then(res => res.json())
       .then(json => {
-        const randomIndex = Math.floor(Math.random() * Math.floor(json.results.length - 1));
-        const randomTheme = json.results[randomIndex];
         this.setState({ 
-          sets: [],
-          randomTheme: randomTheme,
-          finding: true,
+          themes: json.results
         });
-        this.fetchSets(randomTheme.id);
+        this.fetchRandomSets();
       });
   }
 
-  fetchSets = (themeId) => {
-    fetch('https://rebrickable.com/api/v3/lego/sets/?page_size=300&theme_id=' + themeId, {
+  fetchRandomSets = () => {
+    const randomIndex = Math.floor(Math.random() * Math.floor(this.state.themes.length - 1));
+    const randomTheme = this.state.themes[randomIndex];
+
+    fetch('https://rebrickable.com/api/v3/lego/sets/?page_size=300&theme_id=' + randomTheme.id, {
       headers: {
         'Authorization': 'key ' + REBRICKABLE_API_KEY
       }})
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         if (json.results.length < MIN_SETS) {
-          return this.fetchRandomTheme();
+          return this.fetchRandomSets();
         }
         this.setState({ 
           sets: json.results,
-          themeIds: json.results.map(set => set.theme_id),
+          randomTheme: randomTheme,
           finding: false
         });
       });
