@@ -3,7 +3,7 @@ import './App.css';
 import Set from './Set.js';
 
 const REBRICKABLE_API_KEY='0b6a4abaa97580f8f57ec86abe790907'
-const MIN_SETS=40
+const MIN_SETS=35
 
 class App extends Component {
   state = { 
@@ -79,12 +79,12 @@ class App extends Component {
         
         {this.statusMessage()}
         <h2>{this.state.randomTheme.name}</h2>
-        <ul>
+        <section className="products">
         {
           this.state.sets.map(function(set, i){
             return <Set set={set} key={i} />;
         })}
-        </ul>
+        </section>
       </div>
     );
   }

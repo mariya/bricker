@@ -13,20 +13,6 @@ body {
   font-weight: bold;
 }
 
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li.set {
-  display: inline-block;
-  width: 100px;
-}
-
-.set img {
-  height: 100px;
-}
-
 .logo, .status, h2 {
   margin: auto;
   text-align: center;
@@ -53,7 +39,7 @@ h2 {
 }
 
 /* For a.button elements */
-a {
+a.button {
   -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
@@ -90,4 +76,30 @@ a.button2 {
 a.button2:hover {
   color: rgba(255, 255, 255, 0.85);
   box-shadow: rgba(30, 22, 54, 0.7) 0 80px 0px 2px inset;
+}
+
+/* https://css-tricks.com/designing-a-product-page-layout-with-flexbox/ */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  flex: 1 16%;
+  margin: 20px;
+}
+
+.product-image a {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+
+.product-image a img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.product-info {
+  margin-top: auto;
 }
