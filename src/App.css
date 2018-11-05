@@ -27,7 +27,7 @@ li.set {
   height: 100px;
 }
 
-.logo, .status {
+.logo, .status, h2 {
   margin: auto;
   text-align: center;
 }
@@ -40,6 +40,10 @@ h1 {
   font-family: 'Pacifico', cursive;
   text-align: center;
   font-size: 4.5em;
+}
+
+h2 {
+  margin: 30px auto;
 }
 
 .dice {

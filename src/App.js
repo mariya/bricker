@@ -27,26 +27,31 @@ class App extends Component {
         this.setState({ 
           themes: json.results
         });
-        this.fetchRandomSets();
+        this.fetchSets();
       });
   }
 
-  fetchRandomSets = () => {
+  setRandomTheme = () => {
     const randomIndex = Math.floor(Math.random() * Math.floor(this.state.themes.length - 1));
     const randomTheme = this.state.themes[randomIndex];
+    this.setState({ 
+      randomTheme: randomTheme,
+    });
+  }
 
-    fetch('https://rebrickable.com/api/v3/lego/sets/?page_size=300&theme_id=' + randomTheme.id, {
+  fetchSets = () => {
+    this.setRandomTheme();
+    fetch('https://rebrickable.com/api/v3/lego/sets/?page_size=300&theme_id=' + this.state.randomTheme.id, {
       headers: {
         'Authorization': 'key ' + REBRICKABLE_API_KEY
       }})
       .then(res => res.json())
       .then(json => {
         if (json.results.length < MIN_SETS) {
-          return this.fetchRandomSets();
+          return this.fetchSets();
         }
         this.setState({ 
           sets: json.results,
-          randomTheme: randomTheme,
           finding: false
         });
       });
